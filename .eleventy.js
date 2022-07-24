@@ -97,6 +97,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/_admin");
+
   eleventyConfig.addPassthroughCopy("src/service-workers.js");
 
   const md = new markdownIt({
@@ -107,7 +108,7 @@ module.exports = function (eleventyConfig) {
   // FILTERS
   // -----------------------------------------------------------------
 
-  // markdwon {{ item.foo | markdown | safe }}
+  // markdown {{ item.foo | markdown | safe }}
   eleventyConfig.addFilter("markdown", (content) => {
     return md.render(content);
   });
@@ -195,6 +196,7 @@ module.exports = function (eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
+  // -----------------------------------------------------------------
   // Browser config - set 404 page
   eleventyConfig.setBrowserSyncConfig({
     // Open browser by default
